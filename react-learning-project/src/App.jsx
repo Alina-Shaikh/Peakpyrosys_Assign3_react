@@ -1,4 +1,3 @@
-
 import { Routes, Route, Link } from "react-router-dom";
 import Counter from "./components/Counter";
 import FormExample from "./components/FormExample";
@@ -7,36 +6,89 @@ import ApiExample from "./components/ApiExample";
 import StyledButton from "./components/StyledButton";
 
 function Home() {
+  const features = [
+    {
+      title: "Counter",
+      description: "Learn useState & Event Handling",
+      path: "/counter",
+      icon: "🔢",
+    },
+    {
+      title: "Form",
+      description: "Controlled Components & Forms",
+      path: "/form",
+      icon: "📝",
+    },
+    {
+      title: "Users",
+      description: "List Rendering & Data Display",
+      path: "/users",
+      icon: "👥",
+    },
+    {
+      title: "API Calls",
+      description: "Axios & Fetch Integration",
+      path: "/api",
+      icon: "🌐",
+    },
+    {
+      title: "Styled UI",
+      description: "Styled Components",
+      path: "/styled",
+      icon: "🎨",
+    },
+  ];
+
   return (
-    <div className="container">
-      <div className="card">
-        <h1>React Learning Project</h1>
+    <div className="dashboard">
+      <div className="hero">
+        <h1>🚀 React Learning Dashboard</h1>
 
-        <p>This project covers:</p>
+        <p>
+          Explore React concepts through interactive examples including
+          Components, Hooks, Forms, Routing, API Calls, and Styled Components.
+        </p>
+      </div>
 
-        <ul>
-          <li>Components</li>
-          <li>JSX</li>
-          <li>Props & State</li>
-          <li>Event Handling</li>
-          <li>Forms</li>
-          <li>Conditional Rendering</li>
-          <li>List Rendering</li>
-          <li>React Router</li>
-          <li>API Calls</li>
-          <li>Styled Components</li>
-        </ul>
+      <div className="tech-section">
+        <h2>Concepts Covered</h2>
 
-        <nav style={{display:"flex",gap:"10px",flexWrap:"wrap"}}>
-          <Link to="/counter">Counter</Link>
-          <Link to="/form">Form</Link>
-          <Link to="/users">Users</Link>
-          <Link to="/api">API</Link>
-          <Link to="/styled">Styled</Link>
-        </nav>
+        <div className="tech-tags">
+          <span>Components</span>
+          <span>JSX</span>
+          <span>Props</span>
+          <span>State</span>
+          <span>Event Handling</span>
+          <span>Forms</span>
+          <span>Conditional Rendering</span>
+          <span>List Rendering</span>
+          <span>React Router</span>
+          <span>API Calls</span>
+          <span>Styled Components</span>
+        </div>
+      </div>
+
+      <div className="cards">
+        {features.map((feature) => (
+          <Link
+            key={feature.title}
+            to={feature.path}
+            className="feature-card"
+          >
+            <div className="icon">{feature.icon}</div>
+
+            <h3>{feature.title}</h3>
+
+            <p>{feature.description}</p>
+
+            <button className="explore-btn">
+              Explore →
+            </button>
+          </Link>
+        ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default function App() {
